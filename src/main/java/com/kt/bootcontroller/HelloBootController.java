@@ -30,6 +30,7 @@ public class HelloBootController {
 	// 기본적인 응답 패턴이 있음 -> MVC 패턴 -> Template Engine
 	@GetMapping
 	public String helloWorld(@RequestParam String name) {
+		memberService.print();
 		return name + "! Hello, World!";
 	}
 

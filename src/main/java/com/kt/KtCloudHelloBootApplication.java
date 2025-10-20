@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 
 import com.kt.controller.HelloTomcatController;
 import com.kt.controller.PlayTomcatController;
+import com.kt.notice.NoticeController;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -36,15 +37,13 @@ public class KtCloudHelloBootApplication {
 					// /hello 라는 요청을보내면 HelloBootController가 처리하도록 Hello World가 출력되도록
 					// http://localhost:8080/hello?name=ktcloud
 					// name의 값을 콘솔에 출력
-					if (req.getRequestURI().equals("/hello") && req.getMethod().equals("GET")) {
-						var controller = context.getBean(HelloTomcatController.class);
+					if (req.getRequestURI().equals("/notice") && req.getMethod().equals("POST")) {
+						var controller = context.getBean(NoticeController.class);
 
-						var name = req.getParameter("name");
-						var result = controller.helloWorld(name);
 
 						resp.setContentType(MediaType.TEXT_PLAIN_VALUE);
 						resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
-						resp.getWriter().println(result);
+						resp.getWriter().println();
 					}
 
 					if(req.getRequestURI().equals("/play") && req.getMethod().equals("GET")) {
