@@ -8,6 +8,7 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.http.MediaType;
 
+import com.kt.bootservice.NoticeService;
 import com.kt.controller.HelloTomcatController;
 import com.kt.controller.PlayTomcatController;
 import com.kt.notice.NoticeController;
@@ -38,7 +39,10 @@ public class KtCloudHelloBootApplication {
 					// http://localhost:8080/hello?name=ktcloud
 					// name의 값을 콘솔에 출력
 					if (req.getRequestURI().equals("/notice") && req.getMethod().equals("POST")) {
-						var controller = context.getBean(NoticeController.class);
+						var controller = context.getBean("userNoticeService", NoticeService.class);
+						// private final NoticeService userNoticeService;
+						// IoC 컨테이너에 빈등록될 때 -> Map형태 ->
+						// key: userNoticeService, value: UserNoticeService.class
 
 
 						resp.setContentType(MediaType.TEXT_PLAIN_VALUE);

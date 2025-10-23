@@ -3,38 +3,12 @@
 # 1. application.yml
 # 2. application-{profile}.yml
 # 프로필이 존재하지않을때 real1 -> application-real1.yml
-
 spring:
-  datasource:
-    url: jdbc:log4jdbc:mysql://${db.url}:3306/${db.schema}
-  thymeleaf:
-    prefix: classpath:/templates-${active.profiles}/
-    suffix: .html
-
-#dev template-dev
----
-spring:
-  profiles:
-    active: dev
-  thymeleaf:
-    prefix: classpath:/templates-dev/
-    suffix: .html
-
----
-spring:
-  profiles:
-    active: local
   thymeleaf:
     prefix: classpath:/templates-local/
     suffix: .html
-kt:
-  techup: backend
-  c: c
-  d: d
-
-notice:
-  type: normal
-
+  config:
+    import: classpath:common.yml
 # test - 테스트를 돌리는 환경
 # local - 내컴퓨터
 # dev - 개발서버 - 내부 관계자들이 테스트목적으로
@@ -44,4 +18,4 @@ notice:
 # 인텔리제이에서 할 때
 #  - edit configurations - active profiles
 # 실제 배포할 때 - 환경 변수로 제어
-# - java -jar -Dspring.profiles.active=prod -Ddb.url=~~~~ -Ddb.schema=~~~ xxx.jar
+# - java -jar -Dspring.profiles.active=prod xxx.jar
