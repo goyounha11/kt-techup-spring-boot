@@ -19,3 +19,5 @@ spring:
 #  - edit configurations - active profiles
 # 실제 배포할 때 - 환경 변수로 제어
 # - java -jar -Dspring.profiles.active=prod xxx.jar
+server:
+  port: 80
